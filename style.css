@@ -1,37 +1,218 @@
-/* Tambahan Styling Kamera & Status Lokasi */
-.camera-box {
-    width: 100%;
-    max-width: 320px;
-    height: 240px;
-    margin: 15px auto;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #000;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.camera-box video {
+body {
+    background: #f0f4f8;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 15px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 440px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Header Section */
+.header-card {
+    text-align: center;
+}
+
+.brand-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.3px;
+}
+
+.brand-subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* Clock Card */
+.clock-card {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+}
+
+.clock-card h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-variant-numeric: tabular-nums;
+}
+
+.clock-card p {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-top: 4px;
+    font-weight: 400;
+}
+
+/* Camera Preview */
+.camera-card {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.camera-wrapper {
+    width: 100%;
+    max-width: 340px;
+    height: 220px;
+    background-color: #0f172a;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #e2e8f0;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.camera-wrapper video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Status GPS */
 .status-info {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
-    padding: 8px 12px;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    background-color: #e9ecef;
-    color: #495057;
+    padding: 10px 14px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+.status-info {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
 }
 
 .status-info.success {
-    background-color: #d4edda;
-    color: #155724;
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
 }
 
 .status-info.error {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+/* Form Styles */
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 11px 14px;
+    font-size: 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #f8fafc;
+}
+
+.input-group input:focus {
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.input-group input[readonly] {
+    background-color: #f1f5f9;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-masuk {
+    background-color: #16a34a;
+}
+
+.btn-masuk:hover {
+    background-color: #15803d;
+}
+
+.btn-pulang {
+    background-color: #dc2626;
+}
+
+.btn-pulang:hover {
+    background-color: #b91c1c;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Response Message */
+.response-msg {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 18px;
 }

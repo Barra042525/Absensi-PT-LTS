@@ -4,31 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Absensi PT LINTAS TATA SAMUDERA</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Font Google Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="card">
-        <h2>PT LINTAS TATA SAMUDERA</h2>
-        <p class="subtitle">Sistem Absensi Karyawan Online</p>
-        
-        <div class="clock-box">
-            <h1 id="jam">00:00:00</h1>
-            <p id="tanggal">Senin, 1 Januari 2026</p>
+    <div class="app-container">
+        <!-- Header Card -->
+        <div class="header-card">
+            <h2 class="brand-title">PT LINTAS TATA SAMUDERA</h2>
+            <p class="brand-subtitle">Sistem Absensi Karyawan Online</p>
         </div>
 
-        <!-- Kamera Preview -->
-        <div class="camera-box">
-            <video id="webcam" autoplay playsinline muted></video>
-            <canvas id="canvas" style="display:none;"></canvas>
+        <!-- Clock Box -->
+        <div class="clock-card">
+            <h1 id="jam">00:00:00</h1>
+            <p id="tanggal">Senin, 14 September 2026</p>
+        </div>
+
+        <!-- Camera Section -->
+        <div class="camera-card">
+            <div class="camera-wrapper">
+                <video id="webcam" autoplay playsinline muted></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+            </div>
         </div>
 
         <!-- Status Lokasi GPS -->
         <div id="location-status" class="status-info">Memeriksa lokasi GPS...</div>
 
-        <form id="formAbsen" onsubmit="return false;">
+        <!-- Form Absensi -->
+        <form id="formAbsen" class="form-card" onsubmit="return false;">
             <div class="input-group">
                 <label for="idKaryawan">ID Karyawan</label>
-                <input type="text" id="idKaryawan" placeholder="Masukkan ID Karyawan" oninput="cariKaryawan()" required>
+                <input type="text" id="idKaryawan" placeholder="Masukkan ID Karyawan" oninput="cariKaryawan()" autocomplete="off" required>
             </div>
 
             <div class="input-group">
@@ -37,14 +46,19 @@
             </div>
 
             <div class="button-group">
-                <button type="button" id="btnMasuk" class="btn btn-masuk" onclick="kirimAbsen('MASUK')">Absen Masuk</button>
-                <button type="button" id="btnPulang" class="btn btn-pulang" onclick="kirimAbsen('PULANG')">Absen Pulang</button>
+                <button type="button" id="btnMasuk" class="btn btn-masuk" onclick="kirimAbsen('MASUK')">
+                    <span>Absen Masuk</span>
+                </button>
+                <button type="button" id="btnPulang" class="btn btn-pulang" onclick="kirimAbsen('PULANG')">
+                    <span>Absen Pulang</span>
+                </button>
             </div>
         </form>
 
+        <!-- Response Message -->
         <p id="response-msg" class="response-msg"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
