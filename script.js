@@ -45,7 +45,7 @@ function hitungJarakMeter(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
-// Cek Lokasi GPS Pengguna
+// Cek Lokasi GPS Pengguna & Tampilkan Koordinat Real-Time
 function checkLocation() {
     const statusBox = document.getElementById('location-status');
 
@@ -67,24 +67,25 @@ function checkLocation() {
             if (jarakTitik1 <= MAX_RADIUS_METER) {
                 isLocationValid = true;
                 statusBox.className = "status-info success";
-                statusBox.innerText = `Lokasi Valid: Terdeteksi di ${TITIK_LOKASI_1.nama} (${Math.round(jarakTitik1)}m)`;
+                statusBox.innerText = `Lokasi Valid: ${TITIK_LOKASI_1.nama} (${Math.round(jarakTitik1)}m)`;
             } else if (jarakTitik2 <= MAX_RADIUS_METER) {
                 isLocationValid = true;
                 statusBox.className = "status-info success";
-                statusBox.innerText = `Lokasi Valid: Terdeteksi di ${TITIK_LOKASI_2.nama} (${Math.round(jarakTitik2)}m)`;
+                statusBox.innerText = `Lokasi Valid: ${TITIK_LOKASI_2.nama} (${Math.round(jarakTitik2)}m)`;
             } else {
                 isLocationValid = false;
                 const jarakTerdekat = Math.round(Math.min(jarakTitik1, jarakTitik2));
                 statusBox.className = "status-info error";
-                statusBox.innerText = `Di Luar Radius! Jarak ke lokasi terdekat: ${jarakTerdekat}m (Maksimal ${MAX_RADIUS_METER}m)`;
+                // Menampilkan titik koordinat HP Anda saat ini agar tahu deviasinya
+                statusBox.innerText = `Di Luar Radius! Posisi Anda: [${userLat.toFixed(6)}, ${userLng.toFixed(6)}] (Jarak: ${jarakTerdekat}m)`;
             }
         },
         error => {
             isLocationValid = false;
             statusBox.className = "status-info error";
-            statusBox.innerText = "Gagal mengambil lokasi. Pastikan GPS/Izin Lokasi diizinkan!";
+            statusBox.innerText = "Gagal mengambil lokasi. Pastikan GPS & Izin Lokasi diizinkan!";
         },
-        { enableHighAccuracy: true }
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
 }
 
