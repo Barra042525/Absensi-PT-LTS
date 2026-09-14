@@ -103,27 +103,50 @@ function takeSnapshot() {
     return canvas.toDataURL('image/jpeg', 0.7);
 }
 
+// Memuat Data Master Karyawan dari Google Sheets (Optimasi Mobile & HP)
 function loadDataKaryawan() {
     if (!SCRIPT_URL) return;
-    fetch(SCRIPT_URL)
-        .then(response => response.json())
-        .then(data => {
-            if (Array.isArray(data)) dataMasterKaryawan = data;
-        })
-        .catch(err => console.error("Gagal memuat master karyawan:", err));
+    
+    fetch(SCRIPT_URL, {
+        method: 'GET',
+        redirect: 'follow'
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("Gagal mengambil data dari server");
+        return response.json();
+    })
+    .then(data => {
+        if (Array.isArray(data)) {
+            dataMasterKaryawan = data;
+            // Panggil ulang pencarian jika user di HP sudah mengetik ID sebelum data selesai dimuat
+            cariKaryawan();
+        }
+    })
+    .catch(err => {
+        console.error("Gagal memuat master karyawan:", err);
+    });
 }
 
+// Mencari Karyawan Berdasarkan ID (Fleksibel Teks/Angka & Keyboard HP)
 function cariKaryawan() {
-    const inputID = document.getElementById('idKaryawan').value.trim();
-    const inputNama = document.getElementById('namaKaryawan');
+    const inputIDElem = document.getElementById('idKaryawan');
+    const inputNamaElem = document.getElementById('namaKaryawan');
 
-    if (!inputID || !Array.isArray(dataMasterKaryawan)) {
-        inputNama.value = "";
+    if (!inputIDElem || !inputNamaElem) return;
+
+    const inputID = inputIDElem.value.trim().toLowerCase();
+
+    if (!inputID || !Array.isArray(dataMasterKaryawan) || dataMasterKaryawan.length === 0) {
+        inputNamaElem.value = "";
         return;
     }
 
-    const karyawan = dataMasterKaryawan.find(k => String(k.id).trim() === inputID);
-    inputNama.value = karyawan ? karyawan.nama : "";
+    const karyawan = dataMasterKaryawan.find(k => {
+        const idSheet = String(k.id || k.ID || "").trim().toLowerCase();
+        return idSheet === inputID;
+    });
+
+    inputNamaElem.value = karyawan ? (karyawan.nama || karyawan.Nama || "") : "";
 }
 
 function updateWaktu() {

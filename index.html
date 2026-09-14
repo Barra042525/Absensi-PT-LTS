@@ -37,7 +37,7 @@
         <form id="formAbsen" class="form-card" onsubmit="return false;">
             <div class="input-group">
                 <label for="idKaryawan">ID Karyawan</label>
-                <input type="text" id="idKaryawan" placeholder="Masukkan ID Karyawan" oninput="cariKaryawan()" autocomplete="off" required>
+                <input type="text" id="idKaryawan" placeholder="Masukkan ID Karyawan" oninput="cariKaryawan()" onkeyup="cariKaryawan()" onchange="cariKaryawan()" autocomplete="off" required>
             </div>
 
             <div class="input-group">
