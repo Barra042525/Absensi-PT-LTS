@@ -9,8 +9,8 @@ let isLocationValid = false;
 const MAX_RADIUS_METER = 100; // Jarak maksimal (misal: 100 meter)
 
 // Ganti dengan koordinat asli lokasi Anda
-const TITIK_LOKASI_1 = { lat: -6.123456, lng: 106.876543, nama: "Villa, Jl. Mutiara Gading No.2a blok F2, Setia Asih, Kec. Tarumajaya, Kabupaten Bekasi, Jawa Barat 17215" };
-const TITIK_LOKASI_2 = { lat: -6.234567, lng: 106.987654, nama: "Warehouse Lintas Tata Samudra" };
+const TITIK_LOKASI_1 = { lat: -6.123456, lng: 106.876543, nama: "Villa, Jl. Mutiara Gading No.2a-6.157882374358362, 106.996006453364 blok F2, Setia Asih, Kec. Tarumajaya, Kabupaten Bekasi, Jawa Barat 17215" };
+const TITIK_LOKASI_2 = { lat: -6.234567, lng: 106.987654, nama: "Warehouse Lintas Tata Samudra-6.15708724406157, 106.99707665901374" };
 
 // Memulai Kamera Webcam
 function startCamera() {
