@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi PT LINTAS TATA SAMUDERA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <h2>PT LINTAS TATA SAMUDERA</h2>
+        <p class="subtitle">Sistem Absensi Karyawan Online</p>
+        
+        <div class="clock-box">
+            <h1 id="jam">00:00:00</h1>
+            <p id="tanggal">Senin, 1 Januari 2026</p>
+        </div>
+
+        <!-- Kamera Preview -->
+        <div class="camera-box">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+        </div>
+
+        <!-- Status Lokasi GPS -->
+        <div id="location-status" class="status-info">Memeriksa lokasi GPS...</div>
+
+        <form id="formAbsen" onsubmit="return false;">
+            <div class="input-group">
+                <label for="idKaryawan">ID Karyawan</label>
+                <input type="text" id="idKaryawan" placeholder="Masukkan ID Karyawan" oninput="cariKaryawan()" required>
+            </div>
+
+            <div class="input-group">
+                <label for="namaKaryawan">Nama Lengkap</label>
+                <input type="text" id="namaKaryawan" placeholder="Nama otomatis muncul..." readonly>
+            </div>
+
+            <div class="button-group">
+                <button type="button" id="btnMasuk" class="btn btn-masuk" onclick="kirimAbsen('MASUK')">Absen Masuk</button>
+                <button type="button" id="btnPulang" class="btn btn-pulang" onclick="kirimAbsen('PULANG')">Absen Pulang</button>
+            </div>
+        </form>
+
+        <p id="response-msg" class="response-msg"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
