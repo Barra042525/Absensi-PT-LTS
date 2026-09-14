@@ -1,4 +1,4 @@
-const SCRIPT_URL = "URL_WEB_APP_GOOGLE_APPS_SCRIPT_ANDA"; 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzExsCH4_GSIxS4X9gqjSU2XEmwgstKPemJF2pUeixHPACME1XVWD0IMwyQZIC0-Knr/exec"; 
 
 let dataMasterKaryawan = [];
 let userLat = null;
@@ -107,7 +107,7 @@ function loadDataKaryawan() {
 function cariKaryawan() {
     const inputID = document.getElementById('idKaryawan').value.trim();
     const inputNama = document.getElementById('namaKaryawan');
-    
+
     if (!inputID || !Array.isArray(dataMasterKaryawan)) {
         inputNama.value = "";
         return;
