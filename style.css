@@ -6,7 +6,10 @@
 }
 
 body {
-    background: #f0f4f8;
+    /* Gambar background bertema Kapal Kargo & Pelabuhan Logistik Unsplash berkualitas tinggi */
+    background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), 
+                url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=1920&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
     color: #1e293b;
     display: flex;
     justify-content: center;
@@ -18,9 +21,10 @@ body {
 .app-container {
     width: 100%;
     max-width: 440px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Efek efek kaca transparan modern */
     border-radius: 20px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
     padding: 28px 24px;
     display: flex;
     flex-direction: column;
@@ -48,12 +52,12 @@ body {
 
 /* Clock Card */
 .clock-card {
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
     border-radius: 14px;
     padding: 16px;
     text-align: center;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.3);
 }
 
 .clock-card h1 {
@@ -153,13 +157,12 @@ body {
     border-radius: 10px;
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    background-color: #f8fafc;
+    background-color: #ffffff;
 }
 
 .input-group input:focus {
-    border-color: #3b82f6;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .input-group input[readonly] {
@@ -185,7 +188,7 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .btn-masuk {
